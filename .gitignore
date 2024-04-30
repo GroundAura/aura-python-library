@@ -11,53 +11,17 @@
 *.wim
 *.xz
 *.zip
-#.build/
-.build/**/*.pex
-.build/(old)/
-.build/old/
-.build/papyrus/
-.build/release/
 __pycache__/
-#build/
-build/**/*.pex
-build/(old)/
-build/old/
-build/papyrus/
-build/release/
-#dist/**/scripts/*.pex
+build/
 
 # Custom #
-*PluginName*MCM.pex
 *snippets*.*
 *temp*.*
 *test*.*
 .vscode/
-.vscode/settings.json
-ExampleScript.pex
-
-# Dependencies #
 
 # Ideas #
 .idea/
-.idea/(old)/
-.idea/closed/
-.idea/hidden/
-.idea/ignore/
-.idea/licensed/
-.idea/old/
-.idea/private/
-.idea/secret/
-idea/
-idea/(old)/
-idea/closed/
-idea/hidden/
-idea/ignore/
-idea/licensed/
-idea/old/
-idea/private
-idea/secret/
-
-# Licensed #
 
 # OS Files #
 **/._.DS_Store
