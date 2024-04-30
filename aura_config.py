@@ -63,7 +63,7 @@ def read_config(file_path: str, preserve_keys_case: bool = False, debug: bool = 
 	return config_dict
 
 def test() -> None:
-	CONFIG_PATH = os_path.join(get_root_path(), "test.ini")
+	CONFIG_PATH = os_path.join(get_root_path(), "examples", "example_config.ini")
 	try:
 		config = read_config(CONFIG_PATH, True, True)
 	except Exception as e:
