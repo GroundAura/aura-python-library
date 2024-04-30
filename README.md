@@ -28,7 +28,45 @@ read_config(
 ### `filemanager`
 
 ```py
+delete_file(
+  file_path: str | tuple[str]
+) -> None
+```
+
+```py
+delete_folder(
+  file_path: str | tuple[str]
+) -> None
+```
+
+```py
+get_base_path(
+  file_path: str
+) -> str
+```
+
+```py
+get_file_name(
+  file_path: str
+) -> str
+```
+
+```py
+get_file_extension(
+  file_path: str
+) -> str
+```
+
+```py
 get_root_path() -> str
+```
+
+```py
+move_files(
+  source_path: str | list[str] | tuple[str],
+  destination_path: str,
+  force_overwrite: bool = False
+) -> None
 ```
 
 ### `json`
