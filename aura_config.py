@@ -43,25 +43,23 @@ def read_config(file_path: str, preserve_keys_case: bool = False, debug: bool = 
 			elif option.startswith("s", 0, 1):
 				if option.startswith("sPath", 0, 5) or option.endswith("Path"):
 					if value.startswith(root_dir_value):
-						config.set(section, option, root_path + value[len(root_dir_value):])
-						config.set(section, option, config[section][option].replace(root_dir_value, root_path()))
-						value = config.get(section, option).replace(root_dir_value, root_path())
-			elif option.startswith("l", 0, 1):
-				value = list(value)
-			elif option.startswith("t", 0, 1):
-				value = tuple(value)
-			elif option.startswith("d", 0, 1):
-				value = dict(value)
-			elif option.startswith("o", 0, 1):
-				value = set(value)
+						value = root_path + value[len(root_dir_value):]
+			#elif option.startswith("l", 0, 1):
+			#	value = list(value)
+			#elif option.startswith("t", 0, 1):
+			#	value = tuple(value)
+			#elif option.startswith("d", 0, 1):
+			#	value = dict(value)
+			#elif option.startswith("o", 0, 1):
+			#	value = set(value)
 			section_dict[option] = value
 		config_dict[section] = section_dict
 	if debug:
 		print(f"Config ({file_path}):\n{config_dict}")
-		for section in config:
+		for section in config_dict:
 			print(f"\n'[{section}]'")
-			for option in config[section]:
-				print(f"'{option}': {type(config[section][option])} = '{config[section][option]}'")
+			for option in config_dict[section]:
+				print(f"'{option}': {type(config_dict[section][option])} = '{config_dict[section][option]}'")
 	return config_dict
 
 def test() -> None:
