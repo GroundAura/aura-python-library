@@ -1,10 +1,10 @@
-# Aura's Python Function Library | aurapy
+# aura.py | Aura's Python Function Library
 
-This is mostly for me as a way to reuse some functions I use a lot in my projects to reduce manual workload, and as a learning exercise, but feel free to use these for your own projects.
+aura.py is mostly a way for me to reuse some functions I use a lot in my projects, and a learning exercise. Feel free to use these for your own projects if you want though (see license).
 
 ## Modules & Functions
 
-<!-- ### `commandline`
+<!-- ### `aura_cmd.py`
 
 ```py
 run_command(
@@ -12,7 +12,7 @@ run_command(
 ) -> None
 ``` -->
 
-### `config.py`
+### aura_config.py
 
 `read_config()` reads a configuration file in INI format and returns it as a dictionary, with data types formatted according to the first character of keys (`b`: boolean, `i`: integer, `f`: float, `s`: string, `l`: list, `t`: tuple, `d`: dictionary, `o`: set). It allows you to use a variable value to start file paths at the current working directory. It also has options to preserve/ignore the case of keys, enable debug logging, and specify custom valid values for boolean and current working directory variables.
 
@@ -27,7 +27,7 @@ read_config(
 ) -> dict[str, dict[str]]
 ```
 
-### `filemanager.py`
+### aura_files.py
 
 `delete_file()` deletes a file.
 
@@ -87,7 +87,7 @@ move_files(
 ) -> None
 ```
 
-### `json.py`
+### aura_json.py
 
 `escape_json_string()` replaces common dangerous characters in a string with their json-escaped equivalents, allowing them to be used in json files.
 
@@ -97,7 +97,7 @@ escape_json_string(
 ) -> str
 ```
 
-### `skyrim.py`
+### aura_skyrim.py
 
 `is_bethesda_plugin()` checks if a path points to a file that ends in `.esp`, `.esm`, or `.esl`.
 
@@ -107,7 +107,7 @@ is_bethesda_plugin(
 ) -> bool
 ```
 
-### `xml.py`
+### aura_xml.py
 
 `escape_xml_string()` replaces common dangerous characters in a string with their xml-escaped equivalents, allowing them to be used in xml files.
 

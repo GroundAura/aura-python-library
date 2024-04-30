@@ -1,9 +1,10 @@
 import configparser
+#from os import getcwd as get_root_path
 from os import path as os_path
 
 #import sys
 #sys.path.append("./")
-from filemanager import get_root_path
+from aura_files import get_root_path
 
 def read_config(file_path: str, preserve_keys_case: bool = False, debug: bool = False, true_values: tuple[str] | str = ("TRUE", "True", "true", "T", "t", "1"), false_values: tuple[str] | str = ("FALSE", "False", "false", "F", "f", "0"), root_dir_value: str = "[ROOT]") -> dict[str, dict[str]]:
 	config = configparser.ConfigParser(
