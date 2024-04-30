@@ -5,7 +5,7 @@ from os import path as os_path
 #sys.path.append("./")
 from filemanager import get_root_path
 
-def read_config(file_path: str, preserve_keys_case: bool = False, debug: bool = False, true_values: tuple[str] | str = ("TRUE", "True", "true", "T", "t"), false_values: tuple[str] | str = ("FALSE", "False", "false", "F", "f"), root_dir_value: str = "[ROOT]") -> dict[str, dict[str]]:
+def read_config(file_path: str, preserve_keys_case: bool = False, debug: bool = False, true_values: tuple[str] | str = ("TRUE", "True", "true", "T", "t", "1"), false_values: tuple[str] | str = ("FALSE", "False", "false", "F", "f", "0"), root_dir_value: str = "[ROOT]") -> dict[str, dict[str]]:
 	config = configparser.ConfigParser(
 		comment_prefixes=(";", "#", "//"),
 		inline_comment_prefixes=(";", "#", "//")
