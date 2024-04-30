@@ -5,10 +5,7 @@ def format_formid(formid: int | str, plugin: str, format: str = "0xformid~plugin
 	raise NotImplementedError
 
 def is_bethesda_plugin(file_path: str) -> bool:
-	plugin_extensions: tuple[str] = (".esp", ".esm", ".esl")
-	if os_path.isfile(file_path) and file_path.endswith(plugin_extensions):
-		return True
-	return False
+	return True if os_path.isfile(file_path) and file_path.endswith((".esp", ".esm", ".esl")) else False
 
 def test() -> None:
 	raise NotImplementedError
