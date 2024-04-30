@@ -53,19 +53,21 @@ get_base_path(
 ) -> str
 ```
 
-`get_file_name()` gets only the file element from a path. Eg: `file.txt`
+`get_file_name()` gets only the file element from a path. Includes the extension by default, but you can disable this. Eg: `file.txt`, `file`
 
 ```py
 get_file_name(
   file_path: str
+  include_extension: bool = True
 ) -> str
 ```
 
-`get_file_extension()` gets only the file extension from a path to a file. Eg: `.txt`
+`get_file_extension()` gets only the file extension from a path to a file. Includes the `.` by default, but you can disable this. Eg: `.txt`, `txt`
 
 ```py
 get_file_extension(
   file_path: str
+  include_dot: bool = True
 ) -> str
 ```
 
@@ -75,7 +77,7 @@ get_file_extension(
 get_root_path() -> str
 ```
 
-`move_files()` moves a file or a list/tuple of files to a specified folder. You can specify a file name, allowing renaming, if moving a single file, however this is not supported with multiple files.
+`move_files()` moves a file or a list/tuple of files to a specified folder. If moving a single file you can specify a file name, allowing renaming, however this is not supported with multiple files.
 
 ```py
 move_files(

@@ -35,15 +35,21 @@ def get_base_path(file_path: str) -> str:
 	except Exception as e:
 		print(f"ERROR: Error while trying to get base path of '{file_path}': {e}")
 
-def get_file_name(file_path: str) -> str:
+def get_file_name(file_path: str, include_extension: bool = True) -> str:
 	try:
-		return os.path.basename(file_path)
+		if include_extension:
+			return os.path.basename(file_path)
+		else:
+			return os.path.splitext(os.path.basename(file_path))[0]
 	except Exception as e:
 		print(f"ERROR: Error while trying to get file name of '{file_path}': {e}")
 
-def get_file_extension(file_path: str) -> str:
+def get_file_extension(file_path: str, include_dot: bool = True) -> str:
 	try:
-		return os.path.splitext(file_path)[1]
+		if include_dot:
+			return os.path.splitext(file_path)[1]
+		else:
+			return os.path.splitext(os.path.basename(file_path))[1]
 	except Exception as e:
 		print(f"ERROR: Error while trying to get file extension of '{file_path}': {e}")
 
