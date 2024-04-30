@@ -1,18 +1,20 @@
-# aurapy - Aura's Python Function Library
+# Aura's Python Function Library | aurapy
 
 This is mostly for me as a way to reuse some functions I use a lot in my projects to reduce manual workload, and as a learning exercise, but feel free to use these for your own projects.
 
-## Modules and Functions
+## Modules & Functions
 
-### `commandline`
+<!-- ### `commandline`
 
 ```py
 run_command(
   command: str
 ) -> None
-```
+``` -->
 
-### `config`
+### `config.py`
+
+`read_config()` reads a configuration file in INI format and returns it as a dictionary, with data types formatted according to the first character of keys (`b`: boolean, `i`: integer, `f`: float, `s`: string, `l`: list, `t`: tuple, `d`: dictionary, `o`: set). It allows you to use a variable value to start file paths at the current working directory. It also has options to preserve/ignore the case of keys, enable debug logging, and specify custom valid values for boolean and current working directory variables.
 
 ```py
 read_config(
@@ -25,7 +27,9 @@ read_config(
 ) -> dict[str, dict[str]]
 ```
 
-### `filemanager`
+### `filemanager.py`
+
+`delete_file()` deletes a file.
 
 ```py
 delete_file(
@@ -33,11 +37,15 @@ delete_file(
 ) -> None
 ```
 
+`delete_folder()` deletes a directory.
+
 ```py
 delete_folder(
   file_path: str | tuple[str]
 ) -> None
 ```
+
+`get_base_path()` gets only the directory elements from a path to a file. Eg: `c:\example\folders`
 
 ```py
 get_base_path(
@@ -45,11 +53,15 @@ get_base_path(
 ) -> str
 ```
 
+`get_file_name()` gets only the file element from a path. Eg: `file.txt`
+
 ```py
 get_file_name(
   file_path: str
 ) -> str
 ```
+
+`get_file_extension()` gets only the file extension from a path to a file. Eg: `.txt`
 
 ```py
 get_file_extension(
@@ -57,9 +69,13 @@ get_file_extension(
 ) -> str
 ```
 
+`get_root_path()` gets the current working directory path.
+
 ```py
 get_root_path() -> str
 ```
+
+`move_files()` moves a file or a list/tuple of files to a specified folder. You can specify a file name, allowing renaming, if moving a single file, however this is not supported with multiple files.
 
 ```py
 move_files(
@@ -69,7 +85,9 @@ move_files(
 ) -> None
 ```
 
-### `json`
+### `json.py`
+
+`escape_json_string()` replaces common dangerous characters in a string with their json-escaped equivalents, allowing them to be used in json files.
 
 ```py
 escape_json_string(
@@ -77,7 +95,9 @@ escape_json_string(
 ) -> str
 ```
 
-### `skyrim`
+### `skyrim.py`
+
+`is_bethesda_plugin()` checks if a path points to a file that ends in `.esp`, `.esm`, or `.esl`.
 
 ```py
 is_bethesda_plugin(
@@ -85,10 +105,16 @@ is_bethesda_plugin(
 ) -> bool
 ```
 
-### `xml`
+### `xml.py`
+
+`escape_xml_string()` replaces common dangerous characters in a string with their xml-escaped equivalents, allowing them to be used in xml files.
 
 ```py
 escape_xml_string(
   string: str, fomod: bool = False
 ) -> str
 ```
+
+## License
+
+[Clear BSD](https://github.com/GroundAura/aurapy/blob/main/LICENSE.txt)
