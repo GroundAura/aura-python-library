@@ -31,13 +31,14 @@ build/release/
 *snippets*.*
 *temp*.*
 *test*.*
+.vscode/
 .vscode/settings.json
 ExampleScript.pex
 
 # Dependencies #
 
 # Ideas #
-#.idea/
+.idea/
 .idea/(old)/
 .idea/closed/
 .idea/hidden/
@@ -46,7 +47,7 @@ ExampleScript.pex
 .idea/old/
 .idea/private/
 .idea/secret/
-#idea/
+idea/
 idea/(old)/
 idea/closed/
 idea/hidden/
