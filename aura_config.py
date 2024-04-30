@@ -6,7 +6,7 @@ from os import path as os_path
 #sys.path.append("./")
 from aura_files import get_root_path
 
-def read_config(file_path: str, preserve_keys_case: bool = False, debug: bool = False, true_values: tuple[str] | str = ("TRUE", "True", "true", "T", "t", "1"), false_values: tuple[str] | str = ("FALSE", "False", "false", "F", "f", "0"), root_dir_value: str = "[ROOT]") -> dict[str, dict[str]]:
+def read_config(file_path: str, preserve_keys_case: bool = False, debug: bool = False, root_dir_key: tuple[str] | str = ("PATH", "Path", "path", "sPATH", "sPath", "spath"), root_dir_value: str = "[ROOT]", true_values: tuple[str] | str = ("TRUE", "True", "true", "T", "t", "1"), false_values: tuple[str] | str = ("FALSE", "False", "false", "F", "f", "0")) -> dict[str, dict[str]]:
 	config = configparser.ConfigParser(
 		comment_prefixes=(";", "#", "//"),
 		inline_comment_prefixes=(";", "#", "//")
@@ -41,7 +41,7 @@ def read_config(file_path: str, preserve_keys_case: bool = False, debug: bool = 
 			elif option.startswith("f", 0, 1):
 				value = float(value)
 			elif option.startswith("s", 0, 1):
-				if option.startswith("sPath", 0, 5) or option.endswith("Path"):
+				if option.startswith(root_dir_key) or option.endswith(root_dir_key):
 					if value.startswith(root_dir_value):
 						value = root_path + value[len(root_dir_value):]
 			#elif option.startswith("l", 0, 1):

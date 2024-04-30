@@ -14,16 +14,17 @@ run_command(
 
 ### aura_config.py
 
-`read_config()` reads a configuration file in INI format and returns it as a dictionary, with data types formatted according to the first character of keys (`b`: boolean, `i`: integer, `f`: float, `s`: string, `sPath`: string – file path). It allows you to use a variable value to start file paths at the current working directory. It also has options to preserve/ignore the case of keys, enable debug logging, and specify custom valid values for boolean and current working directory variables.
+`read_config()` reads a configuration file in INI format and returns it as a dictionary, with data types formatted according to the first character of keys (`b`: boolean, `i`: integer, `f`: float, `s`: string). It allows you to use a variable value to start file paths at the current working directory; option keys must begin or end with specified strings. It also has options to preserve/ignore the case of keys, enable debug logging, and specify custom valid values for boolean and current working directory variables.
 
 ```py
 read_config(
   file_path: str,
   preserve_keys_case: bool = False,
   debug: bool = False,
+  root_dir_key: tuple[str] | str = ("PATH", "Path", "path", "sPATH", "sPath", "spath"),
+  root_dir_value: str = "[ROOT]",
   true_values: tuple[str] | str = ("TRUE", "True", "true", "T", "t", "1"),
-  false_values: tuple[str] | str = ("FALSE", "False", "false", "F", "f", "0"),
-  root_dir_value: str = "[ROOT]"
+  false_values: tuple[str] | str = ("FALSE", "False", "false", "F", "f", "0")
 ) -> dict[str, dict[str]]
 ```
 
