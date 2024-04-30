@@ -8,7 +8,7 @@ def escape_xml_string(string: str, fomod: bool = False) -> str:
 			"<": "&lt;",
 			">": "&gt;",
 			"\"": "&quot;",
-			"'": "&apos;"
+			"\'": "&apos;"
 		}
 	else:
 		escape_mapping: dict[str, str] = {
@@ -16,7 +16,7 @@ def escape_xml_string(string: str, fomod: bool = False) -> str:
 			"<": "&lt;",
 			">": "&gt;",
 			"\"": "&quot;",
-			"'": "&apos;"
+			"\'": "&apos;"
 		}
 	formatted_string: str = ""
 	for char in string:
