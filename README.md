@@ -4,13 +4,17 @@ aura.py is mostly a way for me to reuse some functions I use a lot in my project
 
 ## Modules & Functions
 
-<!-- ### `aura_cmd.py`
+### `aura_cmd.py`
+
+`run_command()` runs a command line command. Options to use shell and print output.
 
 ```py
 run_command(
-  command: str
+  command: str | list[str],
+  print_output: bool = False,
+  use_shell: bool = False
 ) -> None
-``` -->
+```
 
 ### aura_config.py
 
