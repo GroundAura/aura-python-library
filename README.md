@@ -78,13 +78,40 @@ get_file_extension(
 get_root_path() -> str
 ```
 
-`move_files()` moves a file or a list/tuple of files to a specified folder. If moving a single file you can specify a file name, allowing renaming, however this is not supported with multiple files.
+`move_files()` moves a single file or a list/tuple of files into a specified folder. If moving a single file you can specify a file name, allowing renaming, however this is not supported with multiple files.
 
 ```py
 move_files(
   source_path: str | list[str] | tuple[str],
   destination_path: str,
   force_overwrite: bool = False
+) -> None
+```
+
+`move_folders()` moves a single folder or a list/tuple of folders into a specified folder.
+
+```py
+move_folders(
+  source_path: str | list[str] | tuple[str],
+  destination_path: str
+) -> None
+```
+
+`rename_file()` renames a single file to a new name, including extension. Optionally, you may specify a full file path to move the file as well.
+
+```py
+rename_file(
+  file_path: str,
+  new_name: str
+) -> None
+```
+
+`rename_folder()` renames a single folder to a new name. Optionally, you may specify a full file path to move the folder as well.
+
+```py
+rename_folder(
+  file_path: str,
+  new_name: str
 ) -> None
 ```
 
