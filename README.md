@@ -18,17 +18,20 @@ run_command(
 
 ### aura_config.py
 
-`read_config()` reads a configuration file in INI format and returns it as a dictionary, with data types formatted according to the first character of keys (`b`: boolean, `i`: integer, `f`: float, `s`: string). It allows you to use a variable value to start file paths at the current working directory; option keys must begin or end with specified strings. It also has options to preserve/ignore the case of keys, enable debug logging, and specify custom valid values for boolean and current working directory variables.
+`read_config()` reads a configuration file in INI format and returns it as a dictionary, with data types formatted according to the first character of keys (`b`: boolean, `d`: dictionary, `f`: float, `i`: integer, `l`: list, `o`: set `s`: string, `t`: tuple). It allows you to use a variable value to start file paths at the current working directory; option keys must begin or end with specified strings. It also has options to preserve/ignore the case of keys, enable debug logging, and specify custom values for boolean and current working directory variables.
 
 ```py
 read_config(
   file_path: str,
-  preserve_keys_case: bool = False,
-  debug: bool = False,
-  root_dir_key: tuple[str] | str = ("PATH", "Path", "path", "sPATH", "sPath", "spath"),
+  preserve_key_case: bool = False,
+  comment_prefixes: tuple[str] = (";", "#", "//"),
+  inline_comment_prefixes: tuple[str] = (";", "#", "//"),
+  root_dir_key: tuple[str] | str = ("PATH", "Path", "path"),
   root_dir_value: str = "[ROOT]",
-  true_values: tuple[str] | str = ("TRUE", "True", "true", "T", "t", "1"),
-  false_values: tuple[str] | str = ("FALSE", "False", "false", "F", "f", "0")
+  root_path: str | None = None,
+  bool_case_sens: bool = False,
+  bool_true: tuple[str] | str = ("TRUE", "True", "true", "T", "t", "1"),
+  bool_false: tuple[str] | str = ("FALSE", "False", "false", "F", "f", "0")
 ) -> dict[str, dict[str]]
 ```
 
