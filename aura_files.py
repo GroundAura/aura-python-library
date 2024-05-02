@@ -49,7 +49,7 @@ def get_file_extension(file_path: str, include_dot: bool = True) -> str:
 		if include_dot:
 			return os.path.splitext(file_path)[1]
 		else:
-			return os.path.splitext(os.path.basename(file_path))[1]
+			return os.path.splitext(file_path)[1].lstrip('.')
 	except Exception as e:
 		print(f"ERROR: Error while trying to get file extension of '{file_path}': {e}")
 
@@ -58,6 +58,29 @@ def get_root_path() -> str:
 		return os.getcwd()
 	except Exception as e:
 		print(f"ERROR: Error while trying to get current working directory: {e}")
+
+def has_extension(file_path: str, extensions: str | list[str] | tuple[str]) -> bool:
+	try:
+		extensions: tuple[str] | list[str] = (extensions) if type(extensions) == str else extensions
+		extensions = tuple(extension.lstrip('.') for extension in extensions)
+		return get_file_extension(file_path, False) in extensions
+	except Exception as e:
+		print(f"ERROR: Error while trying to check if '{file_path}' ends with with extension '{extensions}': {e}")
+
+def is_file(file_path: str) -> bool:
+	try:
+		return os.path.isfile(file_path)
+	except Exception as e:
+		print(f"ERROR: Error while trying to check if '{file_path}' is a file: {e}")
+
+def is_file_with_extension(file_path: str, extensions: str | list[str] | tuple[str]) -> bool:
+	return False if not is_file(file_path) or not has_extension(file_path, extensions) else True
+
+def is_folder(file_path: str) -> bool:
+	try:
+		return os.path.isdir(file_path)
+	except Exception as e:
+		print(f"ERROR: Error while trying to check if '{file_path}' is a folder: {e}")
 
 def move_files(source_path: str | list[str] | tuple[str], destination_path: str, force_overwrite: bool = False) -> None:
 	try:
@@ -158,12 +181,15 @@ def rename_folder(file_path: str, new_name: str) -> None:
 		print(f"ERROR: Error while trying to rename folder '{file_path}' to '{new_name}': {e}")
 
 def test() -> None:
-	file_path = "C:\\Code\\Projects\\My Projects\\aurapy\\filemanager.py"
-	#file_path = "filemanager.py"
-	base_name = os.path.basename(file_path)
-	print(f"{base_name}")
-	identical = True if file_path == base_name else False
-	print(f"{identical}")
+	file_path = "C:\\Code\\Projects\\My Projects\\aurapy\\aura_files.py"
+	#file_path = "aura_files.py"
+	extensions = [".py", ".txt"]
+	print(f"get_file_extension('{file_path}') = '{get_file_extension(file_path, True)}'")
+	print(f"is_file('{file_path}') = '{is_file(file_path)}'")
+	print(f"is_file_with_extension('{file_path}', '{extensions}') = '{is_file_with_extension(file_path, extensions)}'")
+	print(f"is_folder('{file_path}') = '{is_folder(file_path)}'")
+	#test = 
+	#print(test)
 
 if __name__ == "__main__":
 	test()

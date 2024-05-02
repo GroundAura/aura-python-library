@@ -78,6 +78,40 @@ get_file_extension(
 get_root_path() -> str
 ```
 
+`has_extension()` checks if a path or string ends with an extension or one of a list/tuple of extensions.
+
+```py
+has_extension(
+  file_path: str,
+  extensions: str | list[str] | tuple[str]
+) -> bool
+```
+
+`is_file()` checks if a file exists at a path.
+
+```py
+is_file(
+  file_path: str
+) -> bool
+```
+
+`is_file_with_extension()` checks in a file exists at a path and ends with an extension or one of a list/tuple of extensions.
+
+```py
+is_file_with_extension(
+  file_path: str,
+  extensions: str | list[str] | tuple[str]
+) -> bool
+```
+
+`is_folder()` checks if a folder exists at a path.
+
+```py
+is_folder(
+  file_path: str
+) -> bool
+```
+
 `move_files()` moves a single file or a list/tuple of files into a specified folder. If moving a single file you can specify a file name, allowing renaming, however this is not supported with multiple files.
 
 ```py
