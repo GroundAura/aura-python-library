@@ -11,23 +11,99 @@ import shutil
 #from pathlib2 import Path
 #from shutil import move as shutil_move
 
-#def copy_file(source_path: str | tuple[str], destination_path: str) -> None:
-#	raise NotImplementedError
+def copy_file(source_path: str, destination_path: str, force_metadata: bool = False, force_overwrite: bool = False) -> None:
+	try:
+		if is_file(source_path):
+			if not force_metadata:
+				if not force_overwrite:
+					shutil.copy(source_path, destination_path)
+				else:
+					shutil.copy(source_path, destination_path, copy=True)
+			else:
+				try:
+					shutil.copy2(source_path, destination_path)
+				except FileExistsError:
+					if not force_overwrite:
+						print(f"WARNING: '{source_path}' already exists at '{destination_path}'. Skipped copying file. Set the argument 'force_overwrite' to 'True' to force overwrite.")
+					else:
+						delete_file(destination_path)
+						shutil.copy2(source_path, destination_path)
+		else:
+			raise FileNotFoundError(f"'{source_path}' does not exist or is not a file.")
+	except Exception as e:
+		print(f"ERROR: Error while trying to copy file '{source_path}' to '{destination_path}': {e}")
 
-#def copy_folder(source_path: str | tuple[str], destination_path: str) -> None:
-#	raise NotImplementedError
+def copy_folder(source_path: str, destination_path: str, force_metadata: bool = False, force_overwrite: bool = False) -> None:
+	try:
+		if is_folder(source_path):
+			if force_metadata:
+				try:
+					shutil.copy2(source_path, destination_path)
+				except FileExistsError:
+					if force_overwrite:
+						delete_folder(destination_path)
+						shutil.copy2(source_path, destination_path)
+					else:
+						print(f"WARNING: '{source_path}' already exists at '{destination_path}'. Skipped copying file. Set the argument 'force_overwrite' to 'True' to force overwrite.")
+			else:
+				if force_overwrite:
+					shutil.copy(source_path, destination_path, copy=True)
+				else:
+					shutil.copy(source_path, destination_path)
+		else:
+			raise FileNotFoundError(f"'{source_path}' does not exist or is not a folder.")
+	except Exception as e:
+		print(f"ERROR: Error while trying to copy folder '{source_path}' to '{destination_path}': {e}")
 
-def delete_file(file_path: str | tuple[str]) -> None:
+#def copy_from_path(source_path: str, destination_path: str, force_metadata: bool = False, force_overwrite: bool = False, type: str | None = None) -> None:
+#	"""
+#	valid values for type: None, "file", "folder"
+#	"""
+#	try:
+#		if type == None:
+#			if is_file(source_path):
+#				copy_file(source_path, destination_path, force_metadata=force_metadata, force_overwrite=force_overwrite)
+#			elif is_folder(source_path):
+#				copy_folder(source_path, destination_path, force_metadata=force_metadata, force_overwrite=force_overwrite)
+#			else:
+#				raise FileNotFoundError(f"'{source_path}' does not exist or is not a file or folder.")
+#		elif type == "folder":
+#			if not is_folder(source_path):
+#				raise FileNotFoundError(f"'{source_path}' does not exist or is not a folder.")
+#			else:
+#				copy_folder(source_path, destination_path, force_metadata=force_metadata, force_overwrite=force_overwrite)
+#		elif type == "file":
+#			if not is_file(source_path):
+#				raise FileNotFoundError(f"'{source_path}' does not exist or is not a file.")
+#			else:
+#				copy_file(source_path, destination_path, force_metadata=force_metadata, force_overwrite=force_overwrite)
+#		else:
+#			raise ValueError(f"Invalid type '{type}'.")
+#	except Exception as e:
+#		print(f"ERROR: Error while trying to copy '{source_path}' to '{destination_path}': {e}")
+
+def delete_file(file_path: str) -> None:
 	try:
 		os.remove(file_path)
 	except Exception as e:
 		print(f"ERROR: Error while trying to delete file '{file_path}': {e}")
 
-def delete_folder(file_path: str | tuple[str]) -> None:
+def delete_folder(file_path: str) -> None:
 	try:
 		os.removedirs(file_path)
 	except Exception as e:
 		print(f"ERROR: Error while trying to delete folder '{file_path}: {e}")
+
+#def delete_from_path(file_path: str) -> None:
+#	try:
+#		if os.path.isfile(file_path):
+#			delete_file(file_path)
+#		elif os.path.isdir(file_path):
+#			delete_folder(file_path)
+#		else:
+#			raise FileNotFoundError(f"ERROR: '{file_path}' does not exist.")
+#	except Exception as e:
+#		print(f"ERROR: Error while trying to delete file '{file_path}': {e}")
 
 def get_base_path(file_path: str) -> str:
 	try:

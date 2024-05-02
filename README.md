@@ -34,6 +34,40 @@ read_config(
 
 ### aura_files.py
 
+`copy_file()` copies a file from one path to another. You can optionally forcibly copy all possible metadata and overwrite an existing file.
+
+```py
+copy_file(
+  source_path: str,
+  destination_path: str,
+  force_metadata: bool = False,
+  force_overwrite: bool = False
+) -> None
+```
+
+`copy_folder()` copies a directory from one path to another. Optionally, you may forcibly copy all possible metadata and overwrite an existing directory.
+
+```py
+copy_folder(
+  source_path: str,
+  destination_path: str,
+  force_metadata: bool = True,
+  force_overwrite: bool = False
+) -> None
+```
+
+<!-- `copy_from_path()` copies a file or directory from one path to another. Optionally, you may forcibly copy all possible metadata, overwrite an existing directory, and specify if you're copying a file or directory.
+
+```py
+copy_from_path(
+  source_path: str,
+  destination_path: str,
+  force_metadata: bool = True,
+  force_overwrite: bool = False,
+  type: str | None = None
+) -> None
+``` -->
+
 `delete_file()` deletes a file.
 
 ```py
@@ -49,6 +83,14 @@ delete_folder(
   file_path: str | tuple[str]
 ) -> None
 ```
+
+<!-- `delete_from_path()` deletes a file or directory.
+
+```py
+delete_from_path(
+  file_path: str
+) -> None
+``` -->
 
 `get_base_path()` gets only the directory elements from a path to a file. Eg: `c:\example\folders`
 
