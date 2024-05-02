@@ -161,11 +161,12 @@ escape_json_string(
 
 ### aura_skyrim.py
 
-`is_bethesda_plugin()` checks if a path points to a file that ends in `.esp`, `.esm`, or `.esl`.
+`is_bethesda_plugin()` checks if a string ends in `.esp`, `.esm`, or `.esl`. By default it also checks if the string is a path to a file.
 
 ```py
 is_bethesda_plugin(
-  file_path: str
+  file_path: str,
+  check_if_file: bool = True
 ) -> bool
 ```
 
