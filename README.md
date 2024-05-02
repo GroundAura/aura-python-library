@@ -174,6 +174,75 @@ is_bethesda_plugin(
 ) -> bool
 ```
 
+### aura_type.py
+
+`get_type()` gets the type of some data and returns it as a string.
+
+```py
+get_type(
+  data: any
+) -> str
+```
+
+`str_to_bool()` turns a string into a boolean. Uses a list of values to consider as true/false that you can optionally override.
+
+```py
+def str_to_bool(
+  string: str,
+  case_sensitive: bool = False,
+  true_values: list[str] | tuple[str] | str = ("TRUE", "True", "true", "T", "t", "1"),
+  false_values: list[str] | tuple[str] | str = ("FALSE", "False", "false", "F", "f", "0")
+) -> bool
+```
+
+`str_to_dict()` turns a string into a dictionary.
+
+```py
+def str_to_dict(
+  string: str
+) -> bool
+```
+
+`str_to_float()` turns a string into a float.
+
+```py
+def str_to_float(
+  string: str
+) -> bool
+```
+
+`str_to_int()` turns a string into a integer.
+
+```py
+def str_to_int(
+  string: str
+) -> bool
+```
+
+`str_to_list()` turns a string into a list.
+
+```py
+def str_to_list(
+  string: str
+) -> bool
+```
+
+`str_to_set()` turns a string into a set.
+
+```py
+def str_to_set(
+  string: str
+) -> bool
+```
+
+`str_to_tuple()` turns a string into a tuple.
+
+```py
+def str_to_tuple(
+  string: str
+) -> bool
+```
+
 ### aura_xml.py
 
 `escape_xml_string()` replaces common dangerous characters in a string with their xml-escaped equivalents, allowing them to be used in xml files.
