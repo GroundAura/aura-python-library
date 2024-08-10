@@ -1,6 +1,6 @@
 #import os
 #from os import path as os_path
-from aura_files import has_extension, is_file
+from .files import has_extension, is_file
 
 #def format_formid(formid: int | str, plugin: str, format: str = "0xformid~plugin") -> str:
 #	raise NotImplementedError

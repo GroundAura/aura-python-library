@@ -1,8 +1,8 @@
 import configparser
 from os import path as os_path
 
-from aura_files import get_root_path
-from aura_type import get_type, str_to_bool, str_to_dict, str_to_float, str_to_int, str_to_list, str_to_set, str_to_tuple
+from .files import get_root_path
+from .type import get_type, str_to_bool, str_to_dict, str_to_float, str_to_int, str_to_list, str_to_set, str_to_tuple
 
 def config_to_dict(
 		config: configparser.ConfigParser,
