@@ -293,8 +293,9 @@ def str_to_tuple(
 `escape_xml_string()` replaces common dangerous characters in a string with their xml-escaped equivalents, allowing them to be used in xml files.
 
 ```py
-escape_xml_string(
-  string: str, fomod: bool = False
+def escape_xml_string(
+  string: str,
+  fomod: bool = False
 ) -> str
 ```
 

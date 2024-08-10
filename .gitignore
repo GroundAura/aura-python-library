@@ -13,9 +13,11 @@
 *.zip
 __pycache__/
 build/
+dist/
+*.egg-info/
 
 # Custom #
-*snippets*.*
+*snippet*.*
 *temp*.*
 *test*.*
 .vscode/

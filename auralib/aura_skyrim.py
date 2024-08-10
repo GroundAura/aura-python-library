@@ -2,8 +2,8 @@
 #from os import path as os_path
 from aura_files import has_extension, is_file
 
-def format_formid(formid: int | str, plugin: str, format: str = "0xformid~plugin") -> str:
-	raise NotImplementedError
+#def format_formid(formid: int | str, plugin: str, format: str = "0xformid~plugin") -> str:
+#	raise NotImplementedError
 
 def is_bethesda_plugin(file_path: str, check_if_file: bool = True) -> bool:
 	if check_if_file and not is_file(file_path):
