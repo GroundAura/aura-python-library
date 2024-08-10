@@ -1,6 +1,10 @@
-# aura.py | Aura's Python Function Library
+# auralib | Aura's Python Library
 
-aura.py is mostly a way for me to reuse some functions I use a lot in my projects, and a learning exercise. Feel free to use these for your own projects if you want though (see license).
+auralib is mostly a way for me to reuse some functions I use a lot in my projects, and a learning exercise. Feel free to use these for your own projects if you want though (see install).
+
+## Install
+
+`pip install auralib`
 
 ## Modules & Functions
 
@@ -301,4 +305,4 @@ def escape_xml_string(
 
 ## License
 
-[Clear BSD](https://github.com/GroundAura/aurapy/blob/main/LICENSE.txt)
+[Clear BSD](https://github.com/GroundAura/aura-python-library/blob/main/LICENSE.txt)
