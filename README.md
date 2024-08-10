@@ -2,6 +2,8 @@
 
 auralib is mostly a way for me to reuse some functions I use a lot in my projects, and a learning exercise. Feel free to use these for your own projects if you want though.
 
+[GitHub](https://github.com/GroundAura/aura-python-library) | [PyPI](https://pypi.org/project/auralib/)
+
 ## Install
 
 1. Install [Python](https://www.python.org/downloads/) 3.x
