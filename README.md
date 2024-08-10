@@ -14,7 +14,7 @@ pip install auralib
 
 ## Modules & Functions
 
-### `aura_cmd.py`
+### aura_cmd.py
 
 `run_command()` runs a command line command. Options to use shell and print output.
 
