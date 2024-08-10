@@ -8,22 +8,24 @@
 *.rar
 *.tar
 *.tar.gz
+*.whl
 *.wim
 *.xz
 *.zip
+*.egg-info/
 __pycache__/
 build/
 dist/
-*.egg-info/
 
 # Custom #
 *snippet*.*
 *temp*.*
 *test*.*
-.vscode/
+.vscode/settings.json
 
 # Ideas #
 .idea/
+!.idea/general/todo.md
 
 # OS Files #
 **/._.DS_Store

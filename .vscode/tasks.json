@@ -1,0 +1,56 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "aura_cmd",
+			"group": "build",
+			"type": "shell",
+			"command": "${command:python.interpreterPath}",
+			"args": ["aura_cmd.py"]
+		},
+		{
+			"label": "aura_config",
+			"group": "build",
+			"type": "shell",
+			"command": "${command:python.interpreterPath}",
+			"args": ["aura_config.py"]
+		},
+		{
+			"label": "aura_files",
+			"group": "build",
+			"type": "shell",
+			"command": "${command:python.interpreterPath}",
+			"args": ["aura_files.py"]
+		},
+		{
+			"label": "aura_json",
+			"group": "build",
+			"type": "shell",
+			"command": "${command:python.interpreterPath}",
+			"args": ["aura_json.py"]
+		},
+		{
+			"label": "aura_skyrim",
+			"group": "build",
+			"type": "shell",
+			"command": "${command:python.interpreterPath}",
+			"args": ["aura_skyrim.py"]
+		},
+		{
+			"label": "aura_type",
+			"group": "build",
+			"type": "shell",
+			"command": "${command:python.interpreterPath}",
+			"args": ["aura_type.py"]
+		},
+		{
+			"label": "aura_xml",
+			"group": "build",
+			"type": "shell",
+			"command": "${command:python.interpreterPath}",
+			"args": ["aura_xml.py"]
+		}
+	]
+}

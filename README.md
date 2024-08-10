@@ -1,10 +1,16 @@
 # auralib | Aura's Python Library
 
-auralib is mostly a way for me to reuse some functions I use a lot in my projects, and a learning exercise. Feel free to use these for your own projects if you want though (see install).
+auralib is mostly a way for me to reuse some functions I use a lot in my projects, and a learning exercise. Feel free to use these for your own projects if you want though.
 
 ## Install
 
-`pip install auralib`
+1. Install [Python](https://www.python.org/downloads/) 3.x
+
+2. Open a command prompt window and enter:
+
+```cmd
+pip install auralib
+```
 
 ## Modules & Functions
 
