@@ -12,6 +12,15 @@ import shutil
 #from shutil import move as shutil_move
 
 def copy_file(source_path: str, destination_path: str, force_metadata: bool = False, force_overwrite: bool = False) -> None:
+	"""
+	Copies a file from source_path to destination_path.
+
+	Args:
+		source_path (str): The file path to copy from.
+		destination_path (str): The file path to copy to.
+		force_metadata (bool, optional): Whether to force copying metadata from the source file. Defaults to False.
+		force_overwrite (bool, optional): Whether to force overwriting the destination file. Defaults to False. Warning: If force_metadata is also True, this will delete the destination file before copying, even if copying fails.
+	"""
 	try:
 		if is_file(source_path):
 			if not force_metadata:
@@ -34,6 +43,15 @@ def copy_file(source_path: str, destination_path: str, force_metadata: bool = Fa
 		print(f"ERROR: Error while trying to copy file '{source_path}' to '{destination_path}': {e}")
 
 def copy_folder(source_path: str, destination_path: str, force_metadata: bool = False, force_overwrite: bool = False) -> None:
+	"""
+	Copies a directory from source_path to destination_path.
+
+	Args:
+		source_path (str): The file path to copy from.
+		destination_path (str): The file path to copy to.
+		force_metadata (bool, optional): Whether to force copying metadata from the source file. Defaults to False.
+		force_overwrite (bool, optional): Whether to force overwriting the destination file. Defaults to False. Warning: If force_metadata is also True, this will delete the destination directory before copying, even if copying fails.
+	"""
 	try:
 		if is_folder(source_path):
 			if force_metadata:
@@ -83,12 +101,24 @@ def copy_folder(source_path: str, destination_path: str, force_metadata: bool = 
 #		print(f"ERROR: Error while trying to copy '{source_path}' to '{destination_path}': {e}")
 
 def delete_file(file_path: str) -> None:
+	"""
+	Deletes a file.
+
+	Args:
+		file_path (str): The file path to delete.
+	"""
 	try:
 		os.remove(file_path)
 	except Exception as e:
 		print(f"ERROR: Error while trying to delete file '{file_path}': {e}")
 
 def delete_folder(file_path: str) -> None:
+	"""
+	Deletes a directory.
+
+	Args:
+		file_path (str): The file path to delete.
+	"""
 	try:
 		os.removedirs(file_path)
 	except Exception as e:
@@ -106,12 +136,31 @@ def delete_folder(file_path: str) -> None:
 #		print(f"ERROR: Error while trying to delete file '{file_path}': {e}")
 
 def get_base_path(file_path: str) -> str:
+	"""
+	Gets the base path (full path except the last component) of the specified file path.
+
+	Args:
+		file_path (str): The file path to get the base path of.
+
+	Returns:
+		str: The base path of the specified file path.
+	"""
 	try:
 		return os.path.dirname(file_path)
 	except Exception as e:
 		print(f"ERROR: Error while trying to get base path of '{file_path}': {e}")
 
 def get_file_extension(file_path: str, include_dot: bool = True) -> str:
+	"""
+	Gets the file extension of the specified file path.
+
+	Args:
+		file_path (str): The file path to get the extension of.
+		include_dot (bool, optional): Whether to include the dot in the returned extension. Defaults to True.
+
+	Returns:
+		str: The extension of the specified file path.
+	"""
 	try:
 		if include_dot:
 			return os.path.splitext(file_path)[1]
@@ -121,6 +170,16 @@ def get_file_extension(file_path: str, include_dot: bool = True) -> str:
 		print(f"ERROR: Error while trying to get file extension of '{file_path}': {e}")
 
 def get_file_name(file_path: str, include_extension: bool = True) -> str:
+	"""
+	Gets the file name of the specified file path.
+
+	Args:
+		file_path (str): The file path to get the name of.
+		include_extension (bool, optional): Whether to include the extension in the returned name. Defaults to True.
+
+	Returns:
+		str: The name of the specified file path.
+	"""
 	try:
 		if include_extension:
 			return os.path.basename(file_path)
@@ -130,12 +189,28 @@ def get_file_name(file_path: str, include_extension: bool = True) -> str:
 		print(f"ERROR: Error while trying to get file name of '{file_path}': {e}")
 
 def get_root_path() -> str:
+	"""
+	Gets the root path of the current working directory.
+
+	Returns:
+		str: The root path of the current working directory.
+	"""
 	try:
 		return os.getcwd()
 	except Exception as e:
 		print(f"ERROR: Error while trying to get current working directory: {e}")
 
 def has_extension(file_path: str, extensions: str | list[str] | tuple[str]) -> bool:
+	"""
+	Checks if the file at the specified file path has the specified extension.
+
+	Args:
+		file_path (str): The file path to check.
+		extensions (str | list[str] | tuple[str]): The extension to check for.
+
+	Returns:
+		bool: True if the file path has the specified extension, False otherwise.
+	"""
 	try:
 		extensions: tuple[str] | list[str] = (extensions) if type(extensions) == str else extensions
 		extensions = tuple(extension.lstrip('.') for extension in extensions)
@@ -144,15 +219,43 @@ def has_extension(file_path: str, extensions: str | list[str] | tuple[str]) -> b
 		print(f"ERROR: Error while trying to check if '{file_path}' ends with with extension '{extensions}': {e}")
 
 def is_file(file_path: str) -> bool:
+	"""
+	Checks if the specified file path is an existing file.
+
+	Args:
+		file_path (str): The file path to check.
+
+	Returns:
+		bool: True if the file path is a file, False otherwise.
+	"""
 	try:
 		return os.path.isfile(file_path)
 	except Exception as e:
 		print(f"ERROR: Error while trying to check if '{file_path}' is a file: {e}")
 
 def is_file_with_extension(file_path: str, extensions: str | list[str] | tuple[str]) -> bool:
+	"""
+	Checks if the specified file path is an existing file with the specified extension.
+
+	Args:
+		file_path (str): The file path to check.
+		extensions (str | list[str] | tuple[str]): The extension to check for.
+
+	Returns:
+		bool: True if the file path is a file with the specified extension, False otherwise.
+	"""
 	return False if not is_file(file_path) or not has_extension(file_path, extensions) else True
 
 def is_folder(file_path: str) -> bool:
+	"""
+	Checks if the specified file path is an existing directory.
+
+	Args:
+		file_path (str): The file path to check.
+
+	Returns:
+		bool: True if the file path is a directory, False otherwise.
+	"""
 	try:
 		return os.path.isdir(file_path)
 	except Exception as e:
@@ -223,6 +326,13 @@ def move_folders(source_path: str | list[str] | tuple[str], destination_path: st
 			print(f"ERROR: Error while trying to move folder '{source_path}' to '{destination_path}': {e}")
 
 def rename_file(file_path: str, new_name: str) -> None:
+	""""
+	Renames a file.
+
+	Args:
+		file_path (str): The path to the file to rename.
+		new_name (str): The new name for the file.
+	"""
 	try:
 		if os.path.isdir(file_path):
 			raise IsADirectoryError(f"ERROR: 'rename_file()' does not support renaming directories. '{file_path}' is a directory.")
@@ -240,6 +350,13 @@ def rename_file(file_path: str, new_name: str) -> None:
 		print(f"ERROR: Error while trying to rename file '{file_path}' to '{new_name}': {e}")
 
 def rename_folder(file_path: str, new_name: str) -> None:
+	"""
+	Renames a directory.
+
+	Args:
+		file_path (str): The path to the directory to rename.
+		new_name (str): The new name for the directory.
+	"""
 	try:
 		if os.path.isfile(file_path):
 			raise NotADirectoryError(f"ERROR: 'rename_folder()' does not support renaming files. '{file_path}' is a file.")
