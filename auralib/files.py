@@ -188,6 +188,30 @@ def get_file_name(file_path: str, include_extension: bool = True) -> str:
 	except Exception as e:
 		print(f"ERROR: Error while trying to get file name of '{file_path}': {e}")
 
+def get_files_with_extension(file_path: str, extension: str | list[str] | tuple[str]) -> list[str]:
+	"""
+	Searches for files with the specified extension in the specified folder.
+
+	Args:
+		file_path (str): The path to the folder to search in.
+		extension (str | list[str] | tuple[str]): The extension to search for.
+
+	Returns:
+		list[str]: A list of file paths with the specified extension.
+	"""
+	try:
+		paths: list[str] = []
+		for dirpath, _, filenames in os.walk(file_path):
+			for filename in filenames:
+				if has_extension(filename, strip_dot(extension)):
+					paths.append(os.path.join(dirpath, filename))
+				#file = os.path.join(dirpath, filename)
+				#if has_extension(file, extension, include_dot):
+				#	paths.append(file)
+		return paths
+	except Exception as e:
+		print(f"ERROR: Error while trying to get files with extension '{extension}' in '{file_path}': {e}")
+
 def get_root_path() -> str:
 	"""
 	Gets the root path of the current working directory.
@@ -213,7 +237,7 @@ def has_extension(file_path: str, extensions: str | list[str] | tuple[str]) -> b
 	"""
 	try:
 		extensions: tuple[str] | list[str] = (extensions) if type(extensions) == str else extensions
-		extensions = tuple(extension.lstrip('.') for extension in extensions)
+		extensions = tuple(strip_dot(extension) for extension in extensions)
 		return get_file_extension(file_path, False) in extensions
 	except Exception as e:
 		print(f"ERROR: Error while trying to check if '{file_path}' ends with with extension '{extensions}': {e}")
@@ -372,6 +396,28 @@ def rename_folder(file_path: str, new_name: str) -> None:
 		#print(f"INFO: Renamed folder: '{os.path.basename(file_path)}' renamed to '{new_name}'")
 	except Exception as e:
 		print(f"ERROR: Error while trying to rename folder '{file_path}' to '{new_name}': {e}")
+
+def strip_dot(extension: str | list[str] | tuple[str]) -> str | list[str] | tuple[str]:
+	"""
+	Strips the dot ('.') from the beginning of an extension if it exists.
+
+	Args:
+		extension (str | list[str] | tuple[str]): The extension to strip the dot from.
+	"""
+	try:
+		if type(extension) in (tuple, list):
+			clean_extension: list = []
+			for e in extension:
+				e = e.lstrip('.')
+				clean_extension.append(e)
+			if type(extension) == tuple:
+				return tuple(clean_extension)
+			else:
+				return clean_extension
+		else:
+			return extension.lstrip('.')
+	except Exception as e:
+		print(f"ERROR: Error while trying to strip dot from '{extension}': {e}")
 
 def test() -> None:
 	file_path = "C:\\Code\\Projects\\My Projects\\aurapy\\aura_files.py"

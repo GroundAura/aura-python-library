@@ -133,6 +133,15 @@ get_file_extension(
 ) -> str
 ```
 
+`get_files_with_extension()` get a list of file paths of files with an extension.
+
+```py
+get_files_with_extension(
+  file_path: str
+  extension: str | list[str] | tuple[str]
+) -> list[str]
+```
+
 `get_root_path()` gets the current working directory path.
 
 ```py
@@ -208,6 +217,14 @@ rename_folder(
   file_path: str,
   new_name: str
 ) -> None
+```
+
+`strip_dot()` removes the dot from the beginning of an extension string if it exists.
+
+```py
+strip_dot(
+  extension: str | list[str] | tuple[str]
+) -> str | list[str] | tuple[str]
 ```
 
 ### aura_json.py
