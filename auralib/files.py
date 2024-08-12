@@ -165,7 +165,7 @@ def get_file_extension(file_path: str, include_dot: bool = False) -> str:
 		if include_dot:
 			return os.path.splitext(file_path)[1]
 		else:
-			return os.path.splitext(file_path)[1].lstrip('.')
+			return strip_dot(os.path.splitext(file_path)[1])
 	except Exception as e:
 		print(f"ERROR: Error while trying to get file extension of '{file_path}': {e}")
 
