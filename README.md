@@ -16,7 +16,7 @@ pip install auralib
 
 ## Modules & Functions
 
-### aura_cmd.py
+### cmd.py
 
 `run_command()` runs a command line command. Options to use shell and print output.
 
@@ -28,7 +28,7 @@ run_command(
 ) -> None
 ```
 
-### aura_config.py
+### config.py
 
 `read_config()` reads a configuration file in INI format and returns it as a dictionary, with data types formatted according to the first character of keys (`b`: boolean, `d`: dictionary, `f`: float, `i`: integer, `l`: list, `o`: set `s`: string, `t`: tuple). It allows you to use a variable value to start file paths at the current working directory; option keys must begin or end with specified strings. It also has options to preserve/ignore the case of keys, enable debug logging, and specify custom values for boolean and current working directory variables.
 
@@ -47,7 +47,7 @@ read_config(
 ) -> dict[str, dict[str]]
 ```
 
-### aura_files.py
+### files.py
 
 `copy_file()` copies a file from one path to another. You can optionally forcibly copy all possible metadata and overwrite an existing file.
 
@@ -227,7 +227,7 @@ strip_dot(
 ) -> str | list[str] | tuple[str]
 ```
 
-### aura_json.py
+### json.py
 
 `escape_json_string()` replaces common dangerous characters in a string with their json-escaped equivalents, allowing them to be used in json files.
 
@@ -237,7 +237,7 @@ escape_json_string(
 ) -> str
 ```
 
-### aura_skyrim.py
+### skyrim.py
 
 `is_bethesda_plugin()` checks if a string ends in `.esp`, `.esm`, or `.esl`. By default it also checks if the string is a path to a file.
 
@@ -248,7 +248,36 @@ is_bethesda_plugin(
 ) -> bool
 ```
 
-### aura_type.py
+### text.py
+
+`lowercase()` turns a string or list of strings to lowercase.
+
+```py
+lowercase(
+  string: str | list[str] | tuple[str] | set[str] | dict[str, str]
+  ) -> str
+```
+
+`read_from_file()` reads from a text file.
+
+```py
+read_from_file(
+  file_path: str,
+  encoding: str = "utf-8"
+  ) -> str
+```
+
+`write_to_file()` writes to a text file.
+
+```py
+write_to_file(
+  file_path: str,
+  text: str = "",
+  encoding: str = "utf-8"
+  ) -> None
+```
+
+### type.py
 
 `get_type()` gets the type of some data and returns it as a string.
 
@@ -317,7 +346,7 @@ str_to_tuple(
 ) -> bool
 ```
 
-### aura_xml.py
+### xml.py
 
 `escape_xml_string()` replaces common dangerous characters in a string with their xml-escaped equivalents, allowing them to be used in xml files.
 
