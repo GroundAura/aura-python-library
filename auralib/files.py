@@ -150,13 +150,13 @@ def get_base_path(file_path: str) -> str:
 	except Exception as e:
 		print(f"ERROR: Error while trying to get base path of '{file_path}': {e}")
 
-def get_file_extension(file_path: str, include_dot: bool = True) -> str:
+def get_file_extension(file_path: str, include_dot: bool = False) -> str:
 	"""
 	Gets the file extension of the specified file path.
 
 	Args:
 		file_path (str): The file path to get the extension of.
-		include_dot (bool, optional): Whether to include the dot in the returned extension. Defaults to True.
+		include_dot (bool, optional): Whether to include the dot in the returned extension. Defaults to False.
 
 	Returns:
 		str: The extension of the specified file path.
